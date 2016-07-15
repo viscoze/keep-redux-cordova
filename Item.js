@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { DragSource, DragTarget } from 'react-dnd';
 
 class Item extends Component {
   constructor() {
@@ -28,7 +29,7 @@ class Item extends Component {
 
   handleBlur(event) {
     let content = event.target.value;
-    
+
     if (!content) {
       this.props.deleteItem();
       return;

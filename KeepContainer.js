@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Main from './Main.js';
+import Keep from './Keep.js';
 
 const _items_ = [
   { id: 1, content: "Make my life better", checked: false, position: 2 },
@@ -8,7 +8,7 @@ const _items_ = [
   { id: 4, content: "Tuesday",             checked: false, position: 4 },
 ];
 
-class MainContainer extends Component {
+class KeepContainer extends Component {
   constructor() {
     super();
     this.state = { items: [] };
@@ -51,8 +51,21 @@ class MainContainer extends Component {
     this.setState({ items: items });
   }
 
+  updateItemPosition(itemId, afterId) {
+    let items = this.state.items.slice();
+    if (itemId !== afterId) {
+      let index = items.findIndex((i) => i.id == itemId);
+      let afterIndex = items.findIndex((i) => i.id == afterId);
+
+      items[index].position = position;
+      items[afterIndex].position = position + 1
+
+      this.setState({ items: items });
+    }
+  }
+
   render() {
-    return <Main items={this.state.items}
+    return <Keep items={this.state.items}
                  addItem={this.addItem.bind(this)}
                  deleteItem={this.deleteItem.bind(this)}
                  checkItem={this.checkItem.bind(this)}
@@ -60,4 +73,4 @@ class MainContainer extends Component {
   }
 }
 
-export default MainContainer;
+export default KeepContainer;

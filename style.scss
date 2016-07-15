@@ -136,7 +136,17 @@ body,html {
       font-size: 18px;
       font-weight: bold;
       outline: none;
-      margin-left: 20%;
+      margin-left: 22%;
+    }
+  }
+
+  .checked {
+    background-color: rgba(0,0,0,.03);
+
+    input[type="text"] {
+      background-color: rgba(0,0,0,.01);
+      color: rgba(0,0,0,0.56) !important;
+      text-decoration: line-through;
     }
   }
 }

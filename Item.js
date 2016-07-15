@@ -28,12 +28,18 @@ class Item extends Component {
 
   handleBlur(event) {
     let content = event.target.value;
+    
+    if (!content) {
+      this.props.deleteItem();
+      return;
+    }
+
     this.props.editItem(content);
   }
 
   render() {
     return (
-      <div className="item">
+      <div className={"item " + (this.props.checked ? "checked" : "")}>
         <input type="checkbox" checked={this.props.checked}
                onChange={this.handleCheck.bind(this)} />
              <input type="text"     value={this.state.content}

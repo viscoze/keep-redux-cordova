@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 import Main from './Main.js';
 
 const _items_ = [
-  { content: "Make my life better", checked: false },
-  { content: "Monday", checked: true },
-  { content: "Make a cake", checked: true },
-  { content: "Tuesday", checked: false },
-  { content: "Train", checked: true },
-  { content: "Cake", checked: false },
-  { content: "Vlad", checked: true },
-  { content: "Vladimir", checked: false },
+  { id: 1, content: "Make my life better", checked: false, position: 2 },
+  { id: 2, content: "Monday",              checked: true,  position: 3 },
+  { id: 3, content: "Make a cake",         checked: true,  position: 1 },
+  { id: 4, content: "Tuesday",             checked: false, position: 4 },
 ];
 
 class MainContainer extends Component {
   constructor() {
     super();
-
     this.state = { items: [] };
   }
 
@@ -24,24 +19,32 @@ class MainContainer extends Component {
   }
 
   addItem(content) {
-    let item = { content: content, checked: false };
+    let item = {
+      id: Date.now(),
+      content: content,
+      checked: false,
+      position: this.state.items.length + 1
+    };
     this.setState({ items: this.state.items.concat([item]) });
   }
 
-  deleteItem(item, index) {
+  deleteItem(itemId) {
     let items = this.state.items.slice();
+    let index = items.findIndex((i) => i.id == itemId);
     items.splice(index, 1)
     this.setState({ items: items });
   }
 
-  checkItem(index, checked) {
+  checkItem(itemId, checked) {
     let items = this.state.items.slice();
+    let index = items.findIndex((i) => i.id == itemId);
     items[index].checked = checked;
     this.setState({ items: items });
   }
 
-  editItem(index, content) {
+  editItem(itemId, content) {
     let items = this.state.items.slice();
+    let index = items.findIndex((i) => i.id == itemId);
     let item  = items[index]
     if (content == item.content) return;
     item.content = content;

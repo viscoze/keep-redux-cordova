@@ -25,6 +25,9 @@ class Main extends Component {
       }
     );
 
+    filteredItems.sort((a,b) => a.position - b.position);
+    filteredItems.sort((a,b) => a.checked  > b.checked);
+
     return (
       <div id="main">
         <Navbar filterText={filterText} handleSearch={handleSearch} />

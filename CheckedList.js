@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { SortableContainer } from 'react-sortable-hoc';
-import Item from './Item.js'
+import CheckedItem from './CheckedItem.js'
 
-class List extends Component {
+class CheckedList extends Component {
   render() {
     return (
-      <div id="list">
+      <div id={ !!this.props.items.length ? "checked-list" : ""}>
         {
           this.props.items.map(
-            (item, index) => <Item key={item.content}
-                                   index={index}
+            (item, index) => <CheckedItem key={item.content}
                                    content={item.content}
                                    checked={item.checked}
                                    deleteItem={this.props.deleteItem.bind(null, item.id)}
@@ -22,4 +20,4 @@ class List extends Component {
   }
 }
 
-export default SortableContainer(List);
+export default CheckedList;

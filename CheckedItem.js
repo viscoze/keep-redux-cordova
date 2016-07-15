@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { SortableElement } from 'react-sortable-hoc';
 
-class Item extends Component {
+class CheckedItem extends Component {
   constructor() {
     super();
 
@@ -40,7 +39,7 @@ class Item extends Component {
 
   render() {
     return (
-      <div className={"item " + (this.props.checked ? "checked" : "")}>
+      <div className="item checked">
         <input type="checkbox" checked={this.props.checked}
                onChange={this.handleCheck.bind(this)} />
         <input type="text"     value={this.state.content}
@@ -53,4 +52,4 @@ class Item extends Component {
   }
 }
 
-export default SortableElement(Item);
+export default CheckedItem;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar.js';
 import Notebar from './Notebar.js';
 import List from './List.js';
+import CheckedList from './CheckedList.js';
 
 class Keep extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class Keep extends Component {
 
   render() {
     let filterText    = this.state.filterText;
+    let onSortEnd     = !!filterText ? null : this.props.updateItemPosition;
     let handleSearch  = this.handleSearch.bind(this);
     let filteredItems = this.props.items.filter(
       (item) => {
@@ -25,13 +27,17 @@ class Keep extends Component {
       }
     );
 
-    filteredItems.sort((a,b) => a.position - b.position);
-    filteredItems.sort((a,b) => a.checked  > b.checked);
-
+    let checkedList   = filteredItems.filter((item) => item.checked);
+    let uncheckedList = filteredItems.filter((item) => !item.checked)
+                                     .sort((a,b) => a.position - b.position);
     return (
       <div id="main">
         <Navbar filterText={filterText} handleSearch={handleSearch} />
-        <List items={filteredItems} deleteItem={this.props.deleteItem}
+        <List items={uncheckedList} deleteItem={this.props.deleteItem}
+                                    checkItem={this.props.checkItem}
+                                    editItem={this.props.editItem}
+                                    onSortEnd={onSortEnd} />
+        <CheckedList items={checkedList}   deleteItem={this.props.deleteItem}
                                     checkItem={this.props.checkItem}
                                     editItem={this.props.editItem} />
         <Notebar addItem={this.props.addItem} />

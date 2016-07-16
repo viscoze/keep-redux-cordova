@@ -28,8 +28,8 @@ class Keep extends Component {
     );
 
     let checkedList   = filteredItems.filter((item) => item.checked);
-    let uncheckedList = filteredItems.filter((item) => !item.checked)
-                                     .sort((a,b) => a.position - b.position);
+    let uncheckedList = filteredItems.filter((item) => !item.checked);
+
     return (
       <div id="main">
         <Navbar filterText={filterText} handleSearch={handleSearch} />

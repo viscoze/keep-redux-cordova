@@ -42,9 +42,17 @@ class KeepContainer extends Component {
   checkItem(itemId, checked) {
     let items = this.state.items.slice();
     let index = items.findIndex((i) => i.id == itemId);
-    items[index].checked  = checked;
-    items[index].position = checked ? null : this.state.items.filter(x => !x.checked).length + 1;
-    this.setState({ items: items });
+    let item  = items[index];
+
+    item.checked  = checked;
+    item.position = checked ? null : items.filter(i => !i.checked).length;
+
+    let uncheckedList = items.filter((i) => !i.checked && i.content !== item.content);
+    let checkedList = items.filter((i) => i.checked && i.content !== item.content);
+    let newItems = uncheckedList.concat([item]).concat(checkedList);
+
+    this.setState({ items: newItems });
+    console.log(newItems);
   }
 
   editItem(itemId, content) {
@@ -66,7 +74,7 @@ class KeepContainer extends Component {
       (item, index) => Object.assign({}, item, { position: index + 1 })
     );
 
-    this.setState({ items: uncheckedList.concat(checkedList) });
+    this.setState({ items: newItems.concat(checkedList) });
   }
 
   render() {

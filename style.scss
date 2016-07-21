@@ -2,7 +2,7 @@ body,html {
   display: block;
   padding: 0;
   margin: 0;
-  background-color: #e8e8e8;
+  background-color: #f0f2f5;
 }
 
 #main {
@@ -17,7 +17,7 @@ body,html {
     top: 0; left: 0;
     width: 100%;
     height: 50px;
-    background-color: #fb0;
+    background-color: #ee496e;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 10px;
     padding-top: 5px;
 
@@ -25,7 +25,7 @@ body,html {
       margin: auto;
       height: 40px;
       width: 90%;
-      background-color: rgba(0,0,0,0.04);
+      background-color: rgba(0,0,0,0.08);
       border-radius: 4px;
       padding-left: 10px;
 
@@ -34,11 +34,11 @@ body,html {
       justify-content: flex-start;;
 
       ::-webkit-input-placeholder {
-        color: rgba(0,0,0,.87) !important;
+        color: white !important;
       }
 
       input {
-
+        color: white !important;
         display: inline-block;
         font: normal 16px Roboto,sans-serif;
         border: none;
@@ -64,9 +64,7 @@ body,html {
     box-sizing: border-box;
 
     input[type="text"] {
-      font-weight: lighter;
-      font-family: 'Roboto Slab','Times New Roman',serif;
-      font-size: 20px;
+      font: lighter 20px Roboto,sans-serif;
       background-color: transparent;
       border: none;
       outline: none;
@@ -78,16 +76,16 @@ body,html {
       width: 35%;
       height: 40px;
       border-radius: 0;
-      background-color: #fb0;
+      background-color: #ee496e;
       border: none;
-      color: rgba(0,0,0,0.5);
+      color: white;
       font: normal 16px Roboto,sans-serif;
       font-size: 35px;
       font-weight: bold;
       outline: none;
 
       &:active {
-        background-color: rgba(#fb0,0.5);
+        background-color: rgba(#ee496e,0.5);
       }
     }
   }
@@ -95,28 +93,28 @@ body,html {
   #list {
     padding: 0 5px;
   }
-}
 
-#checked-list {
-  border-top: 1px solid rgba(0,0,0,.1);
-  padding: 0 5px;
-  margin-top: 25px;
-  padding-top: 25px;
+  #checked-list {
+    border-top: 1px solid rgba(0,0,0,.1);
+    margin-top: 25px;
+    padding: 0 5px;
+    padding-top: 25px;
 
-  .checked {
-    background-color: rgba(0,0,0,.03);
-
-    input[type="text"] {
-      background-color: rgba(0,0,0,.01);
-      color: rgba(0,0,0,0.56) !important;
-      text-decoration: line-through;
+    .checked {
+      background-color: rgba(0,0,0,.04);
+      
+      input[type="text"] {
+        background-color: rgba(0,0,0,.01);
+        color: rgba(0,0,0,0.56) !important;
+        text-decoration: line-through;
+      }
     }
   }
 }
 
 .item {
   width: 100%;
-  height: 40px;
+  height: 70px;
   background-color: white;
   box-shadow:  0 2px 2px 0 rgba(0,0,0,0.14),
                0 3px 1px -2px rgba(0,0,0,0.2),
@@ -148,9 +146,9 @@ body,html {
     display: inline-block;
     padding-top: 2px;
     border-radius: 50%;
-    border: none;
-    background-color: rgba(0,0,0,.60);
-    color: white;
+    border: 2px solid #ee496e;
+    background-color: transparent;
+    color: #ee496e;
     font: normal 16px Roboto,sans-serif;
     font-size: 18px;
     font-weight: bold;

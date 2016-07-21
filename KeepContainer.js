@@ -52,7 +52,6 @@ class KeepContainer extends Component {
     let newItems = uncheckedList.concat([item]).concat(checkedList);
 
     this.setState({ items: newItems });
-    console.log(newItems);
   }
 
   editItem(itemId, content) {
